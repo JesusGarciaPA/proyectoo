@@ -33,7 +33,7 @@
 
         <h3 style="font-family: Tahoma; color: #000000; font-weight: bold;  font-size: 23px;">Contenido del Archivo:</h3>
         <pre id="contenidoArchivo" style="font-family: Tahoma; color: #000000; font-weight: bold;"></pre>
-        
+
         <!-- Agregamos una tabla HTML -->
         <div id="tablaContenedor">
             <h3 style="font-family: Tahoma; color: #000000; font-weight: bold;  font-size: 23px;">Tabla de Datos:</h3>
@@ -66,6 +66,9 @@
                 var encabezados = Object.keys(data[0]);
                 var tabla = document.getElementById("datosTabla");
 
+                // Ordenar encabezados alfabéticamente
+                encabezados.sort();
+
                 // Agregar encabezados
                 var encabezadosRow = document.getElementById("encabezadosTabla");
                 encabezadosRow.innerHTML = "";
@@ -73,6 +76,11 @@
                     var th = document.createElement("th");
                     th.textContent = encabezado;
                     encabezadosRow.appendChild(th);
+                });
+
+                // Ordenar datos alfabéticamente
+                data.sort(function(a, b) {
+                    return a[nombreColumna].localeCompare(b[nombreColumna]);
                 });
 
                 // Agregar filas de datos
@@ -95,5 +103,3 @@
 </body>
 
 </html>
-
-
