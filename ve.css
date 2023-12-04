@@ -53,3 +53,14 @@
    top: 640px;
    right: 70px;
 }
+.b_navegacion2{
+   width: 10%;
+   height: 30px !important;
+   font-size: 25px !important;
+   font-family:Helvetica,Arial,sans-serif;
+   color: #FFFFFFAB;
+   background-color: #323636;
+   position: absolute;
+   top: 640px;
+   right: 70px;
+}
