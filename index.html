@@ -13,41 +13,87 @@
     <div class="container">
         <div class="b_navegacion">
             <ul>
-                <li><a href="diagrama" class="nav-link">Diagrama de Venn</a></li>
-                <li><a href="modelo" class="nav-link">Modelo Entidad-Relación</a></li>
+                <li><a href="diagrama" style="font-family: Tahoma; color: #FFFFFF; font-weight: bold;">Diagrama de Venn</a></li>
+                <li><a href="modelo" style="font-family: Tahoma; color: #FFFFFF; font-weight: bold;">Modelo Entidad-Relación</a></li>
             </ul>
         </div>
         <br><br><br>
-        <h1 class="main-title">Análisis Estadístico</h1>
+        <h1 style="font-family: Tahoma; color: #000000; font-weight: bold; text-align: center; font-weight: bold; font-size: 30px;">Análisis Estadístico</h1>
 
-        <input class="file-input" type="file" id="archivoInput" accept=".xlsx" required>
-
-        <br>
-
-        <label class="input-label" for="columna">Nombre de la columna para calcular la suma:</label>
-        <input class="input-field" type="text" id="nombreColumna" required>
+        <input style="font-family: Tahoma; color: #000000; font-size: 23px;" type="file" id="archivoInput" accept=".xlsx" required>
 
         <br>
 
-        <button class="calc-btn" onclick="calcularEstadisticas()">Calcular</button>
+        <label style="font-family: Tahoma; color: #000000; font-size: 23px;" for="columna">Nombre de la columna para calcular la suma:</label>
+        <input type="text" id="nombreColumna" required>
 
-        <h3 class="sub-title">Contenido del Archivo en Tabla:</h3>
+        <br>
+
+        <button onclick="calcularEstadisticas()">Calcular</button>
+
+        <h3 style="font-family: Tahoma; color: #000000; font-weight: bold;  font-size: 23px;">Contenido del Archivo:</h3>
+        <pre id="contenidoArchivo" style="font-family: Tahoma; color: #000000; font-weight: bold;"></pre>
+        
+        <!-- Agregamos una tabla HTML -->
         <div id="tablaContenedor">
-            <!-- Aquí se mostrará la tabla generada dinámicamente -->
+            <h3 style="font-family: Tahoma; color: #000000; font-weight: bold;  font-size: 23px;">Tabla de Datos:</h3>
+            <table id="datosTabla" border="1">
+                <!-- Encabezados de la tabla -->
+                <thead>
+                    <tr id="encabezadosTabla">
+                        <!-- Se agregarán dinámicamente con JavaScript -->
+                    </tr>
+                </thead>
+                <!-- Cuerpo de la tabla -->
+                <tbody id="cuerpoTabla">
+                    <!-- Se agregarán dinámicamente con JavaScript -->
+                </tbody>
+            </table>
         </div>
 
         <div class="cont_cards">
-            <p id="sumaResultado" class="result-text"></p>
-            <p id="mediaResultado" class="result-text"></p>
-            <p id="modaResultado" class="result-text"></p>
-            <p id="medianaResultado" class="result-text"></p>
+            <p id="sumaResultado" style="font-family: Tahoma; color: #000000; font-weight: bold; text-align: center; font-size: 25px;"></p>
+            <p id="mediaResultado" style="font-family: Tahoma; color: #000000; font-weight: bold; text-align: center; font-size: 25px;"></p>
+            <p id="modaResultado" style="font-family: Tahoma; color: #000000; font-weight: bold; text-align: center; font-size: 25px;"></p>
+            <p id="medianaResultado" style="font-family: Tahoma; color: #000000; font-weight: bold; text-align: center; font-size: 25px;"></p>
         </div>
-    </div>
 
-    <script>
-        // ... (resto del script permanece sin cambios)
-    </script>
+        <script>
+            function calcularEstadisticas() {
+                // ... (el resto del código permanece sin cambios)
+
+                // Añadir la creación dinámica de la tabla
+                var encabezados = Object.keys(data[0]);
+                var tabla = document.getElementById("datosTabla");
+
+                // Agregar encabezados
+                var encabezadosRow = document.getElementById("encabezadosTabla");
+                encabezadosRow.innerHTML = "";
+                encabezados.forEach(function (encabezado) {
+                    var th = document.createElement("th");
+                    th.textContent = encabezado;
+                    encabezadosRow.appendChild(th);
+                });
+
+                // Agregar filas de datos
+                var cuerpoTabla = document.getElementById("cuerpoTabla");
+                cuerpoTabla.innerHTML = "";
+                data.forEach(function (fila) {
+                    var tr = document.createElement("tr");
+                    encabezados.forEach(function (encabezado) {
+                        var td = document.createElement("td");
+                        td.textContent = fila[encabezado];
+                        tr.appendChild(td);
+                    });
+                    cuerpoTabla.appendChild(tr);
+                });
+
+                // ... (el resto del código permanece sin cambios)
+            }
+        </script>
+    </div>
 </body>
 
 </html>
+
 
