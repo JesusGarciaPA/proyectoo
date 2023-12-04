@@ -96,12 +96,35 @@
                 document.getElementById("contenidoArchivo").innerHTML = tableHtml;
 
                 // Calculate and display statistics
+                calcularSuma(data, nombreColumna);
+                calcularMedia(data, nombreColumna);
                 calcularModa(data, nombreColumna);
                 calcularMediana(data, nombreColumna);
                 calcularFrecuencia(data, nombreColumna);
             };
 
             reader.readAsBinaryString(archivo);
+        }
+
+        function calcularSuma(data, columna) {
+            var suma = 0;
+            for (var i = 0; i < data.length; i++) {
+                suma += parseFloat(data[i][columna]);
+            }
+
+            var sumaResultado = "Suma: " + suma.toFixed(2);
+            document.getElementById("sumaResultado").innerHTML = sumaResultado;
+        }
+
+        function calcularMedia(data, columna) {
+            var suma = 0;
+            for (var i = 0; i < data.length; i++) {
+                suma += parseFloat(data[i][columna]);
+            }
+
+            var media = suma / data.length;
+            var mediaResultado = "Media: " + media.toFixed(2);
+            document.getElementById("mediaResultado").innerHTML = mediaResultado;
         }
 
         function calcularModa(data, columna) {
