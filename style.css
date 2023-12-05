@@ -70,14 +70,14 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
-            background-color: #515A5A;
+            background-color: #FDFEFE;
         }
 
         th, td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
-            background-color: #515A5A;
+            background-color: #FDFEFE;
         }
 
         th {
